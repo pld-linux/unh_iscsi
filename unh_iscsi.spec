@@ -11,13 +11,13 @@
 Summary:	UNH iSCSI Initiator/Target for Linux
 Summary(pl):	Sterowniki UNH iSCSI Initiator/Target dla Linuksa
 Name:		unh_iscsi
-Version:	1.5.03
+Version:	1.6.00
 %define		_rel 1
 Release:	%{_rel}
 License:	GPL
 Group:		Base/Kernel
 Source0:	http://dl.sourceforge.net/unh-iscsi/%{name}-%{version}.tar.gz
-# Source0-md5:	8911b733944f1f453e1a8ff51d603f40
+# Source0-md5:	086e09a2cb48f0020ff6602aa5e34cf4
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Patch0:		%{name}-headers.patch
