@@ -2,11 +2,11 @@
 #	- finish it
 #
 # Conditional build:
-%bcond_without  dist_kernel     # allow non-distribution kernel
-%bcond_without  kernel          # don't build kernel modules
-%bcond_without  smp             # don't build SMP module
-%bcond_without  userspace       # don't build userspace module
-%bcond_with     verbose         # verbose build (V=1)
+%bcond_without	dist_kernel	# allow non-distribution kernel
+%bcond_without	kernel		# don't build kernel modules
+%bcond_without	smp		# don't build SMP module
+%bcond_without	userspace	# don't build userspace module
+%bcond_with	verbose		# verbose build (V=1)
 #
 Summary:	UNH iSCSI Initiator/Target for Linux
 Summary(pl):	Sterowniki UNH iSCSI Initiator/Target dla Linuksa
@@ -77,26 +77,27 @@ echo "#define OUR_NAME \"PLD Linux %{name}/%{version} for kernel %{_kernel_ver_s
 
 # kernel module(s)
 for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}; do
-    if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
-        exit 1
-    fi
-    rm -rf include
-    install -d include/{linux,config}
-    ln -sf %{_kernelsrcdir}/config-$cfg .config
-    ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h include/linux/autoconf.h
-    ln -sf %{_kernelsrcdir}/include/asm-%{_target_base_arch} include/asm
-    touch include/config/MARKER
+	if [ ! -r "%{_kernelsrcdir}/config-$cfg" ]; then
+		exit 1
+	fi
+	rm -rf include
+	install -d include/{linux,config}
+	ln -sf %{_kernelsrcdir}/config-$cfg .config
+	ln -sf %{_kernelsrcdir}/include/linux/autoconf-$cfg.h include/linux/autoconf.h
+	ln -sf %{_kernelsrcdir}/include/asm-%{_target_base_arch} include/asm
+	touch include/config/MARKER
 
-    %{__make} -C %{_kernelsrcdir} clean \
-        RCS_FIND_IGNORE="-name '*.ko' -o" \
-        M=$PWD O=$PWD \
-        %{?with_verbose:V=1}
-    %{__make} -C %{_kernelsrcdir} modules \
-        M=$PWD O=$PWD \
-        %{?with_verbose:V=1}
-    for mod in unh_iscsi_initiator unh_iscsi_target unh_scsi_target; do
-	mv ${mod}{,-$cfg}.ko
-    done
+	%{__make} -C %{_kernelsrcdir} clean \
+		RCS_FIND_IGNORE="-name '*.ko' -o" \
+		M=$PWD O=$PWD \
+		%{?with_verbose:V=1}
+		%{__make} -C %{_kernelsrcdir} modules \
+		M=$PWD O=$PWD \
+		%{?with_verbose:V=1}
+	
+	for mod in unh_iscsi_initiator unh_iscsi_target unh_scsi_target; do
+		mv ${mod}{,-$cfg}.ko
+	done
 done
 %endif
 
@@ -111,12 +112,12 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man{1,5,8},/etc/{rc.d/init.d,s
 cd src
 %if %{with kernel}
 install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
-for mod in unh_iscsi_initiator  unh_iscsi_target  unh_scsi_target; do
+for mod in unh_iscsi_initiator unh_iscsi_target unh_scsi_target; do
 	install ${mod}-%{?with_dist_kernel:up}%{!?with_dist_kernel:nondist}.ko \
-	        $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/${mod}.ko
+		$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/${mod}.ko
 %if %{with smp} && %{with dist_kernel}
 	install ${mod}-smp.ko \
-	        $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/${mod}.ko
+		$RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/${mod}.ko
 %endif
 done
 %endif
@@ -155,7 +156,7 @@ if [ "$1" = "0" ]; then
 #	if [ -f /var/lock/subsys/%{name} ]; then
 #		/etc/rc.d/init.d/%{name} stop >&2
 #	fi
-        /sbin/chkconfig --del %{name}
+	/sbin/chkconfig --del %{name}
 fi
 
 %if %{with userspace}
