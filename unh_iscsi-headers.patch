@@ -1,0 +1,11 @@
+diff -urN unh_iscsi.1.5.03.org/src/common/iscsi_common.c unh_iscsi.1.5.03/src/common/iscsi_common.c
+--- unh_iscsi.1.5.03.org/src/common/iscsi_common.c	2004-06-15 03:08:02.283380912 +0200
++++ unh_iscsi.1.5.03/src/common/iscsi_common.c	2004-06-15 03:08:56.081202400 +0200
+@@ -35,7 +35,6 @@
+ #include <linux/socket.h>
+ #include <linux/net.h>
+ #include <linux/in.h>
+-#include <linux/inet.h>
+ #include <scsi/scsi.h>
+ 
+ #include "iscsi_common.h"
