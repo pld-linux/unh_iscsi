@@ -1,13 +1,15 @@
 # TODO:
 #	- finish it
 #
+# Conditional build:
 %bcond_without  dist_kernel     # allow non-distribution kernel
 %bcond_without  kernel          # don't build kernel modules
 %bcond_without  smp             # don't build SMP module
 %bcond_without  userspace       # don't build userspace module
 %bcond_with     verbose         # verbose build (V=1)
-
+#
 Summary:	UNH iSCSI Initiator/Target for Linux
+Summary(pl):	Sterowniki UNH iSCSI Initiator/Target dla Linuksa
 Name:		unh_iscsi
 Version:	1.5.03
 %define		_rel 1
@@ -27,7 +29,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_sbindir	/sbin
 
 %description
-The UNH-iSCSI project consists of software implementations of an Initiator and Target emulator loadable modules for the IETF Networking (SAN) protocol (Draft 20).
+The UNH-iSCSI project consists of software implementations of an
+Initiator and Target emulator loadable modules for the IETF Networking
+(SAN) protocol (Draft 20).
+
+%description -l pl
+Projekt UNH-iSCSI sk³ada siê z programowych implementacji emulacji
+Initiator i Target jako ³adowalnych modu³ów dla protoko³u IETF
+Networking (SAN) (draft 20).
 
 %package -n kernel-unh_iscsi
 Summary:	UNH ISCSI kernel module
