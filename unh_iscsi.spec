@@ -95,7 +95,7 @@ for cfg in %{?with_dist_kernel:%{?with_smp:smp} up}%{!?with_dist_kernel:nondist}
 		%{__make} -C %{_kernelsrcdir} modules \
 		M=$PWD O=$PWD \
 		%{?with_verbose:V=1}
-	
+
 	for mod in unh_iscsi_initiator unh_iscsi_target unh_scsi_target; do
 		mv ${mod}{,-$cfg}.ko
 	done
@@ -166,7 +166,7 @@ fi
 %doc src/docs/* src/CHANGELOG
 %attr(755,root,root) %{_sbindir}/*
 %attr(754,root,root) /etc/rc.d/init.d/%{name}
-%attr(640,root,root) %config(noreplace) %verify(not mtime md5 size) /etc/sysconfig/%{name}
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/%{name}
 %endif
 
 %if %{with kernel}
