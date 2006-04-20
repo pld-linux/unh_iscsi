@@ -8,11 +8,11 @@
 %bcond_without	userspace	# don't build userspace module
 %bcond_with	verbose		# verbose build (V=1)
 #
+%define		_rel 1
 Summary:	UNH iSCSI Initiator/Target for Linux
 Summary(pl):	Sterowniki UNH iSCSI Initiator/Target dla Linuksa
 Name:		unh_iscsi
 Version:	1.6.00
-%define		_rel 1
 Release:	%{_rel}
 License:	GPL
 Group:		Base/Kernel
@@ -23,7 +23,10 @@ Source2:	%{name}.sysconfig
 Patch0:		%{name}-headers.patch
 URL:		http://unh-iscsi.sourceforge.net/
 %{?with_dist_kernel:BuildRequires:	kernel-headers >= 2.6.0}
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRequires:	sysfsutils-static
+Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sbindir	/sbin
@@ -146,17 +149,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/chkconfig --add %{name}
-#if [ -f /var/lock/subsys/%{name} ]; then
-#	/etc/rc.d/init.d/%{name} restart 1>&2
-#else
-#	echo "Type \"/etc/rc.d/init.d/%{name} start\" to start %{name}" 1>&2
-#fi
+#%%service %{name} start
 
 %preun
 if [ "$1" = "0" ]; then
-#	if [ -f /var/lock/subsys/%{name} ]; then
-#		/etc/rc.d/init.d/%{name} stop >&2
-#	fi
+	%service %{name} stop
 	/sbin/chkconfig --del %{name}
 fi
 
