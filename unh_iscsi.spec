@@ -169,11 +169,11 @@ fi
 %if %{with kernel}
 %files -n kernel-unh_iscsi
 %defattr(644,root,root,755)
-%attr(644,root,root) /lib/modules/%{_kernel_ver}/misc/*
+/lib/modules/%{_kernel_ver}/misc/*
 
 %if %{with smp} && %{with dist_kernel}
 %files -n kernel-smp-unh_iscsi
 %defattr(644,root,root,755)
-%attr(644,root,root) /lib/modules/%{_kernel_ver}smp/misc/*
+/lib/modules/%{_kernel_ver}smp/misc/*
 %endif
 %endif
