@@ -46,7 +46,7 @@ Summary:	UNH ISCSI kernel module
 Summary(pl):	Modu³ j±dra UNH ISCSI
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description -n kernel-unh_iscsi
 IP over SCSI kernel module.
@@ -59,7 +59,7 @@ Summary:	ISCSI SMP kernel module
 Summary(pl):	Modu³ j±dra SMP ISCSI
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description -n kernel-smp-unh_iscsi
 IP over SCSI SMP kernel module.
