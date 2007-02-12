@@ -10,7 +10,7 @@
 #
 %define		_rel 1
 Summary:	UNH iSCSI Initiator/Target for Linux
-Summary(pl.UTF-8):   Sterowniki UNH iSCSI Initiator/Target dla Linuksa
+Summary(pl.UTF-8):	Sterowniki UNH iSCSI Initiator/Target dla Linuksa
 Name:		unh_iscsi
 Version:	1.6.00
 Release:	%{_rel}
@@ -43,7 +43,7 @@ Networking (SAN) (draft 20).
 
 %package -n kernel-unh_iscsi
 Summary:	UNH ISCSI kernel module
-Summary(pl.UTF-8):   Moduł jądra UNH ISCSI
+Summary(pl.UTF-8):	Moduł jądra UNH ISCSI
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	%{name} = %{version}-%{release}
@@ -56,7 +56,7 @@ Moduł jądra dla protokołu IP over SCSI.
 
 %package -n kernel-smp-unh_iscsi
 Summary:	ISCSI SMP kernel module
-Summary(pl.UTF-8):   Moduł jądra SMP ISCSI
+Summary(pl.UTF-8):	Moduł jądra SMP ISCSI
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	%{name} = %{version}-%{release}
