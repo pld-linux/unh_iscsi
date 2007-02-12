@@ -10,7 +10,7 @@
 #
 %define		_rel 1
 Summary:	UNH iSCSI Initiator/Target for Linux
-Summary(pl):	Sterowniki UNH iSCSI Initiator/Target dla Linuksa
+Summary(pl.UTF-8):   Sterowniki UNH iSCSI Initiator/Target dla Linuksa
 Name:		unh_iscsi
 Version:	1.6.00
 Release:	%{_rel}
@@ -36,14 +36,14 @@ The UNH-iSCSI project consists of software implementations of an
 Initiator and Target emulator loadable modules for the IETF Networking
 (SAN) protocol (Draft 20).
 
-%description -l pl
-Projekt UNH-iSCSI sk≥ada siÍ z programowych implementacji emulacji
-Initiator i Target jako ≥adowalnych modu≥Ûw dla protoko≥u IETF
+%description -l pl.UTF-8
+Projekt UNH-iSCSI sk≈Çada siƒô z programowych implementacji emulacji
+Initiator i Target jako ≈Çadowalnych modu≈Ç√≥w dla protoko≈Çu IETF
 Networking (SAN) (draft 20).
 
 %package -n kernel-unh_iscsi
 Summary:	UNH ISCSI kernel module
-Summary(pl):	Modu≥ j±dra UNH ISCSI
+Summary(pl.UTF-8):   Modu≈Ç jƒÖdra UNH ISCSI
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	%{name} = %{version}-%{release}
@@ -51,12 +51,12 @@ Requires:	%{name} = %{version}-%{release}
 %description -n kernel-unh_iscsi
 IP over SCSI kernel module.
 
-%description -n kernel-unh_iscsi -l pl
-Modu≥ j±dra dla protoko≥u IP over SCSI.
+%description -n kernel-unh_iscsi -l pl.UTF-8
+Modu≈Ç jƒÖdra dla protoko≈Çu IP over SCSI.
 
 %package -n kernel-smp-unh_iscsi
 Summary:	ISCSI SMP kernel module
-Summary(pl):	Modu≥ j±dra SMP ISCSI
+Summary(pl.UTF-8):   Modu≈Ç jƒÖdra SMP ISCSI
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires:	%{name} = %{version}-%{release}
@@ -64,8 +64,8 @@ Requires:	%{name} = %{version}-%{release}
 %description -n kernel-smp-unh_iscsi
 IP over SCSI SMP kernel module.
 
-%description -n kernel-smp-unh_iscsi -l pl
-Modu≥ j±dra SMP dla protoko≥u IP over SCSI.
+%description -n kernel-smp-unh_iscsi -l pl.UTF-8
+Modu≈Ç jƒÖdra SMP dla protoko≈Çu IP over SCSI.
 
 %prep
 %setup -q -n %{name}.%{version}
