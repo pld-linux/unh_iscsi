@@ -1,11 +1,21 @@
-diff -urN unh_iscsi.1.5.03.org/src/common/iscsi_common.c unh_iscsi.1.5.03/src/common/iscsi_common.c
---- unh_iscsi.1.5.03.org/src/common/iscsi_common.c	2004-06-15 03:08:02.283380912 +0200
-+++ unh_iscsi.1.5.03/src/common/iscsi_common.c	2004-06-15 03:08:56.081202400 +0200
-@@ -35,7 +35,6 @@
- #include <linux/socket.h>
- #include <linux/net.h>
- #include <linux/in.h>
--#include <linux/inet.h>
- #include <scsi/scsi.h>
+--- unh-iscsi-2.0/common/user_space.h.orig	2008-05-28 20:54:49.000000000 +0200
++++ unh-iscsi-2.0/common/user_space.h	2024-03-17 14:30:08.472082138 +0100
+@@ -48,6 +48,7 @@
+ #include <fcntl.h>
+ #include <signal.h>
+ #include <pthread.h>
++#include <limits.h>
+ #include <sys/types.h>
+ #include <sys/socket.h>
+ #include <sys/times.h>
+--- unh-iscsi-2.0/initiator/initiator_utilities.c.orig	2008-05-28 20:54:49.000000000 +0200
++++ unh-iscsi-2.0/initiator/initiator_utilities.c	2024-03-17 14:42:53.027940184 +0100
+@@ -224,7 +224,7 @@ static inline void __attribute__ ((no_in
+ 	this_command->tx_iovlen = 1;
+ }
  
- #include "iscsi_common.h"
+-inline int __attribute__ ((no_instrument_function))
++int __attribute__ ((no_instrument_function))
+     get_immed_length(struct session *current_session,
+ 		 struct connection *current_connection,
+ 		 struct scsi_cmnd *Cmnd)

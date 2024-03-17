@@ -1,0 +1,11 @@
+--- unh-iscsi-2.0/Makefile-user.orig	2024-03-17 14:33:20.007711167 +0100
++++ unh-iscsi-2.0/Makefile-user	2024-03-17 14:36:33.996660239 +0100
+@@ -137,7 +137,7 @@ initiator/unh_main_scsi_initiator: initi
+ make.dep:
+ 	rm -f $(DEPEND_FILE)
+ 	touch $(DEPEND_FILE)
+-	makedepend `find . -name \*.[ch]` -f$(DEPEND_FILE) >& /dev/null
++	makedepend `find . -name \*.[ch]` -f$(DEPEND_FILE) > /dev/null 2>&1
+ 	rm $(DEPEND_FILE).bak
+ 
+ #

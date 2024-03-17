@@ -1,0 +1,11 @@
+--- unh-iscsi-2.0/datamover/iser_pdu.c.orig	2008-05-28 20:54:49.000000000 +0200
++++ unh-iscsi-2.0/datamover/iser_pdu.c	2024-03-17 14:40:21.025430319 +0100
+@@ -916,7 +916,7 @@ void iser_pdu_print(char *prefix,	//!< s
+ 	__u32 opcode;
+ 	int max_data_print_len = 0x1000;
+ 
+-	PRINT_BUFF_CAT(prefix);
++	PRINT_BUFF_CAT("%s", prefix);
+ 	if ((char *) p_id != NULL)
+ 		PRINT_BUFF_CAT("(0x%p): ", (char *) p_id);
+ 
